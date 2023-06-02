@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -31,6 +32,30 @@ public class ToileController implements Initializable {
     private static int angleDepart = 90;
     private static int noteMaximale = 20;
 
+    @FXML
+    Button videButton;
+
+    @FXML
+    Button traceButton;
+
+    @FXML
+    TextField txtFieldComp1;
+
+    @FXML
+    TextField txtFieldComp2;
+
+    @FXML
+    TextField txtFieldComp3;
+
+    @FXML
+    TextField txtFieldComp4;
+
+    @FXML
+    TextField txtFieldComp5;
+
+    @FXML
+    TextField txtFieldComp6;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,6 +69,31 @@ public class ToileController implements Initializable {
     int getYRadarChart(double value, int axe ){
         return (int) (rayonCercleExterieur - Math.sin(Math.toRadians(angleDepart - (axe-1)  * angleEnDegre)) * rayonCercleExterieur
                 *  (value / noteMaximale));
+    }
+
+    @FXML
+    private void traceClicked(){
+        txtFieldComp1.setOnAction(e -> {
+            String comp1 = txtFieldComp1.getText();
+            try {
+                int saisie = Integer.parseInt(txtFieldComp1.getText());
+
+            } catch () {
+
+            }
+        });
+    }
+
+    @FXML
+    private void videClicked(){
+        videButton.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent ->{
+            txtFieldComp1.clear();
+            txtFieldComp2.clear();
+            txtFieldComp3.clear();
+            txtFieldComp4.clear();
+            txtFieldComp5.clear();
+            txtFieldComp6.clear();
+        });
     }
 
 }

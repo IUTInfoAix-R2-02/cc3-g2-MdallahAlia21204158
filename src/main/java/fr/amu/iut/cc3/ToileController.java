@@ -60,6 +60,9 @@ public class ToileController implements Initializable {
     @FXML
     Pane scene;
 
+    @FXML
+    Line line;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 
 import java.net.URL;
@@ -56,6 +57,9 @@ public class ToileController implements Initializable {
     @FXML
     TextField txtFieldComp6;
 
+    @FXML
+    Pane scene;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,16 +75,46 @@ public class ToileController implements Initializable {
                 *  (value / noteMaximale));
     }
 
+    private void Dessiner(double value, int axis){
+        double y = getYRadarChart(value, axis);
+        double x = getXRadarChart(value, axis);
+
+        Circle c1 = new Circle(y, x, 5);
+        c1.setCenterX(x);
+        c1.setCenterY(y);
+        c1.setRadius(5);
+
+        scene.getChildren().add(c1);
+    }
+
+
+
     @FXML
     private void traceClicked(){
-        txtFieldComp1.setOnAction(e -> {
+        traceButton.addEventHandler(MouseEvent.MOUSE_CLICKED, actionEvent ->{
             String comp1 = txtFieldComp1.getText();
-            try {
-                int saisie = Integer.parseInt(txtFieldComp1.getText());
+            int saisie = Integer.parseInt(txtFieldComp1.getText());
+            Dessiner(saisie, 25);
 
-            } catch () {
+            String comp2 = txtFieldComp2.getText();
+            int saisie2 = Integer.parseInt(txtFieldComp2.getText());
+            Dessiner(saisie2, 200);
 
-            }
+            String comp3 = txtFieldComp3.getText();
+            int saisie3 = Integer.parseInt(txtFieldComp3.getText());
+            Dessiner(saisie3, 225);
+
+            String comp4 = txtFieldComp4.getText();
+            int saisie4 = Integer.parseInt(txtFieldComp4.getText());
+            Dessiner(saisie4, 100);
+
+            String comp5 = txtFieldComp5.getText();
+            int saisie5 = Integer.parseInt(txtFieldComp5.getText());
+            Dessiner(saisie5, 125);
+
+            String comp6 = txtFieldComp6.getText();
+            int saisie6 = Integer.parseInt(txtFieldComp6.getText());
+            Dessiner(saisie6, 150);
         });
     }
 
@@ -95,5 +129,4 @@ public class ToileController implements Initializable {
             txtFieldComp6.clear();
         });
     }
-
 }
